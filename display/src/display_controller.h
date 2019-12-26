@@ -3,29 +3,30 @@
 
 #define DISPLAY_WIDTH 128
 #define DISPLAY_HEIGHT 64
+#define DISPLAY_BUFFER_SIZE (DISPLAY_WIDTH * DISPLAY_HEIGHT / sizeof(uint8_t))
 
-typedef struct 
+typedef struct
 {
-    uint32_t            updateDelay;
+  uint32_t updateDelay;
 } DisplayControllerConfig_t;
 
-
-typedef struct 
+typedef struct
 {
-    uint8_t header;
-    uint8_t buffer[DISPLAY_WIDTH*DISPLAY_HEIGHT/sizeof(uint8_t)];
+  uint8_t header;
+  uint8_t buffer[DISPLAY_WIDTH * DISPLAY_HEIGHT / sizeof(uint8_t)];
 } DisplayBuffer_t;
 
 typedef struct
 {
-    DisplayBuffer_t frameBuffer;
+  DisplayBuffer_t frameBuffer;
 } DisplayControllerState_t;
 
-void displayInit(DisplayControllerConfig_t* info);
+void displayInit(DisplayControllerConfig_t *info);
+void displayDrawString(int x, int y, char *c);
 void displayDraw(int x, int y, int pixel);
 void displayDrawLine(int sx, int sy, int ex, int ey, int pixel);
-void displayDrawTri(int x0, int y0, int x1, int y1, int x2, int y2, int pixel );
+void displayDrawTri(int x0, int y0, int x1, int y1, int x2, int y2, int pixel);
 void displayUpdate();
 void displayClear();
-DisplayBuffer_t* displayFrameBuffer();
+DisplayBuffer_t *displayFrameBuffer();
 #endif

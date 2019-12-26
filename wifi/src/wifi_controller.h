@@ -11,14 +11,15 @@
 #define WIFI_AP 0
 
 data_type(
-{
-  char ssid[32];
-  char password[64];
-  uint8_t maxConnections;
-  uint8_t retryCount;
-}, WifiConfig_t);
+    {
+      char ssid[32];
+      char password[64];
+      uint8_t maxConnections;
+      uint8_t retryCount;
+    },
+    WifiConfig_t);
 
-void wifiInit(WifiConfig_t* config);
+void wifiInit(WifiConfig_t *config);
 EventGroupHandle_t *wifiGetEventGroup();
 
 #endif
